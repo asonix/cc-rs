@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Tool` struct in crate `cc`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Tool">
+
+    <title>cc::Tool - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Tool</p><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.to_command">to_command</a><a href="#method.path">path</a><a href="#method.args">args</a><a href="#method.env">env</a><a href="#method.cc_env">cc_env</a><a href="#method.cflags_env">cflags_env</a><a href="#method.is_like_gnu">is_like_gnu</a><a href="#method.is_like_clang">is_like_clang</a><a href="#method.is_like_msvc">is_like_msvc</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='index.html'>cc</a></p><script>window.sidebarCurrent = {name: 'Tool', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>cc</a>::<wbr><a class="struct" href=''>Tool</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/cc/lib.rs.html#168-175' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Tool { /* fields omitted */ }</pre><div class='docblock'><p>Configuration used to represent an invocation of a C compiler.</p>
+
+<p>This can be used to figure out what compiler is in use, what the arguments
+to it are, and what the environment variables look like for the compiler.
+This can be used to further configure other build systems (e.g. forward
+along CC and/or CFLAGS) or the <code>to_command</code> method can be used to run the
+compiler itself.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../cc/struct.Tool.html" title="struct cc::Tool">Tool</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1634-1752' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.to_command' class="method"><span id='to_command.v' class='invisible'><code>pub fn <a href='#method.to_command' class='fnname'>to_command</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/process/struct.Command.html" title="struct std::process::Command">Command</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1663-1678' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Converts this compiler into a <code>Command</code> that&#39;s ready to be run.</p>
+
+<p>This is useful for when the compiler needs to be executed and the
+command returned will already have the initial arguments and environment
+variables configured.</p>
+</div><h4 id='method.path' class="method"><span id='path.v' class='invisible'><code>pub fn <a href='#method.path' class='fnname'>path</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1684-1686' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns the path for this compiler.</p>
+
+<p>Note that this may not be a path to a file on the filesystem, e.g. &quot;cc&quot;,
+but rather something which will be resolved when a process is spawned.</p>
+</div><h4 id='method.args' class="method"><span id='args.v' class='invisible'><code>pub fn <a href='#method.args' class='fnname'>args</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1690-1692' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns the default set of arguments to the compiler needed to produce
+executables for the target this compiler generates.</p>
+</div><h4 id='method.env' class="method"><span id='env.v' class='invisible'><code>pub fn <a href='#method.env' class='fnname'>env</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1698-1700' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns the set of environment variables needed for this compiler to
+operate.</p>
+
+<p>This is typically only used for MSVC compilers currently.</p>
+</div><h4 id='method.cc_env' class="method"><span id='cc_env.v' class='invisible'><code>pub fn <a href='#method.cc_env' class='fnname'>cc_env</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1706-1722' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns the compiler command in format of CC environment variable.
+Or empty string if CC env was not present</p>
+
+<p>This is typically used by configure script</p>
+</div><h4 id='method.cflags_env' class="method"><span id='cflags_env.v' class='invisible'><code>pub fn <a href='#method.cflags_env' class='fnname'>cflags_env</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsString.html" title="struct std::ffi::os_str::OsString">OsString</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1727-1736' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns the compiler flags in format of CFLAGS environment variable.
+Important here - this will not be CFLAGS from env, its internal gcc&#39;s flags to use as CFLAGS
+This is typically used by configure script</p>
+</div><h4 id='method.is_like_gnu' class="method"><span id='is_like_gnu.v' class='invisible'><code>pub fn <a href='#method.is_like_gnu' class='fnname'>is_like_gnu</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1739-1741' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Whether the tool is GNU Compiler Collection-like.</p>
+</div><h4 id='method.is_like_clang' class="method"><span id='is_like_clang.v' class='invisible'><code>pub fn <a href='#method.is_like_clang' class='fnname'>is_like_clang</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1744-1746' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Whether the tool is Clang-like.</p>
+</div><h4 id='method.is_like_msvc' class="method"><span id='is_like_msvc.v' class='invisible'><code>pub fn <a href='#method.is_like_msvc' class='fnname'>is_like_msvc</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#1749-1751' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Whether the tool is MSVC-like.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../cc/struct.Tool.html" title="struct cc::Tool">Tool</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#167' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../cc/struct.Tool.html" title="struct cc::Tool">Tool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#167' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../cc/struct.Tool.html" title="struct cc::Tool">Tool</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#167' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/cc/lib.rs.html#167' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "cc";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
